@@ -1,14 +1,14 @@
 apply plugin: 'com.dd.comgradle'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    compileSdkVersion build_versions.target_sdk
+    buildToolsVersion build_versions.build_tools
     defaultConfig {
+        minSdkVersion build_versions.min_sdk
+        targetSdkVersion build_versions.target_sdk
+        versionCode build_versions.version_code
+        versionName build_versions.version_name
         applicationId "com.luojilab.androidcomponent"
-        minSdkVersion 15
-        targetSdkVersion 14
-        versionCode 1
-        versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         javaCompileOptions {
@@ -41,10 +41,13 @@ android {
 }
 
 dependencies {
-    compile project(':componentservice')
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation project(':componentservice')
+    implementation project(':componentlib')
+    implementation project(':basicres')
+    implementation project(':basiclib')
+    implementation deps.constraint_layout
 //    annotationProcessor project(':router-anno-compiler')
-    annotationProcessor 'com.github.jimu:router-anno-compiler:1.0.1'
+    annotationProcessor project(':router-anno-compiler')
 }
 
 combuild {
