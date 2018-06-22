@@ -142,6 +142,7 @@ def addRepos(RepositoryHandler handler) {
     handler.jcenter()
     handler.maven { url "https://jitpack.io" }
     handler.mavenCentral()
+    handler.google()
     handler.maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
 }
 
